@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - Lyric Room</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="profile-container">
+    <img id="avatar" src="assets/logo.png" alt="Avatar">
+    <input type="file" id="avatarUpload">
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="bio" placeholder="Bio">
+    <input type="text" id="status" placeholder="Status">
+    <button id="saveProfile">Save Profile</button>
+</div>
+<script type="module" src="profile.js"></script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+  <img src="me.jpg" class="avatar" style="width:120px; height:120px; margin:auto; display:block;">
+  <h2 style="text-align:center; margin:10px;">@you</h2>
+
+  <div class="card">
+    <p>Posts: 12</p>
+    <p>Followers: 540</p>
+    <p>Following: 89</p>
+  </div>
+</div>
+
+<div class="navbar">
+  <a href="feed.html">🏠</a>
+  <a href="messages.html">💬</a>
+  <a href="#">➕</a>
+  <a href="profile.html">👤</a>
+  <a href="settings.html">⚙</a>
+</div>
+<script type="module" src="auth.js"></script>
+<script type="module" src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {
+  background: #0d0d0d;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.admin-card {
+  max-width: 350px;
+  margin: 120px auto;
+  padding: 25px;
+  background: #1b1b1b;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #111;
+  color: #fff;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #ff0044;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}

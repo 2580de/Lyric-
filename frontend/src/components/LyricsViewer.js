@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const LyricsViewer = ({ musicId }) => {
   const [lyrics, setLyrics] = useState(null);
@@ -10,7 +11,7 @@ const LyricsViewer = ({ musicId }) => {
   useEffect(() => {
     const fetchLyrics = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/lyrics/music/${musicId}`);
+        const response = await axios.get(API_ENDPOINTS.LYRICS.GET(musicId));
         setLyrics(response.data);
         setLoading(false);
       } catch (err) {

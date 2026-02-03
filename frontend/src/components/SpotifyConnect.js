@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const SpotifyConnect = ({ userId, userType = 'listener' }) => {
   const [isConnected, setIsConnected] = useState(false);
@@ -9,7 +10,7 @@ const SpotifyConnect = ({ userId, userType = 'listener' }) => {
 
   const handleConnect = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/spotify/auth-url');
+      const response = await axios.get(API_ENDPOINTS.SPOTIFY.AUTH_URL);
       window.location.href = response.data.authUrl;
     } catch (err) {
       console.error('Failed to get auth URL:', err);
@@ -18,7 +19,7 @@ const SpotifyConnect = ({ userId, userType = 'listener' }) => {
 
   const handleCallback = async (code) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/spotify/callback', {
+      const response = await axios.post(API_ENDPOINTS.SPOTIFY.CALLBACK, {
         code,
         userId,
         userType,
@@ -33,7 +34,7 @@ const SpotifyConnect = ({ userId, userType = 'listener' }) => {
   const fetchTopTracks = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/spotify/${userId}/top-tracks`);
+      const response = await axios.get(API_ENDPOINTS.SPOTIFY.TOP_TRACKS(userId));
       setTopTracks(response.data);
       setLoading(false);
     } catch (err) {
@@ -44,7 +45,7 @@ const SpotifyConnect = ({ userId, userType = 'listener' }) => {
 
   const handleDisconnect = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/spotify/${userId}`);
+      await axios.delete(API_ENDPOINTS.SPOTIFY.DISCONNECT(userId));
       setIsConnected(false);
       setSpotifyInfo(null);
       setTopTracks([]);

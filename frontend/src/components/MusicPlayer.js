@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const MusicPlayer = ({ musicId, onLyricsClick }) => {
   const [music, setMusic] = useState(null);
@@ -12,7 +13,7 @@ const MusicPlayer = ({ musicId, onLyricsClick }) => {
   useEffect(() => {
     const fetchMusic = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/music/${musicId}`);
+        const response = await axios.get(API_ENDPOINTS.MUSIC.GET(musicId));
         setMusic(response.data);
       } catch (err) {
         console.error('Failed to fetch music:', err);
@@ -53,7 +54,7 @@ const MusicPlayer = ({ musicId, onLyricsClick }) => {
 
   const handleLike = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/music/${musicId}/like`, {
+      await axios.put(API_ENDPOINTS.MUSIC.LIKE(musicId), {
         userId: 'current-user-id',
       });
       setLiked(!liked);

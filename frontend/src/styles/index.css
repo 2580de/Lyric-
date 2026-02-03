@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset and base styles */
+/* ============================================
+   RESET AND BASE STYLES
+   ============================================ */
+
 * {
   margin: 0;
   padding: 0;
@@ -11,27 +14,30 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #000;
+  background-color: #000;
   color: #fff;
 }
 
-html,
 body,
+html,
 #root {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
 
-/* Glass effect utilities */
+/* ============================================
+   GLASS MORPHISM EFFECTS
+   ============================================ */
+
 @layer components {
   .glass {
     @apply backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl;
@@ -45,11 +51,14 @@ body,
     @apply backdrop-blur-md bg-white/5 border border-white/10 rounded-lg;
   }
 
+  .glass-lg {
+    @apply backdrop-blur-2xl bg-white/10 border border-white/30 rounded-2xl;
+  }
+
   .text-gradient {
     @apply bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
   }
 
-  /* Button styles with glass effect */
   .btn-glass {
     @apply px-4 py-2 rounded-lg backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-200 cursor-pointer;
   }
@@ -57,9 +66,16 @@ body,
   .btn-glass-primary {
     @apply px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:shadow-lg transition-all duration-200 cursor-pointer font-semibold;
   }
+
+  .btn-glass-secondary {
+    @apply px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 transition-all duration-200 cursor-pointer;
+  }
 }
 
-/* Custom scrollbar for webkit browsers */
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -86,13 +102,15 @@ body,
   background-clip: padding-box;
 }
 
-/* Firefox scrollbar */
-* {
+:root {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
-/* Smooth transitions and animations */
+/* ============================================
+   INTERACTIVE ELEMENTS
+   ============================================ */
+
 button,
 a,
 input,
@@ -108,7 +126,23 @@ select:focus {
   outline-offset: 2px;
 }
 
-/* Utility classes */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   TEXT TRUNCATION UTILITIES
+   ============================================ */
+
 .truncate-1 {
   display: -webkit-box;
   -webkit-line-clamp: 1;
